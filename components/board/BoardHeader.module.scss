@@ -1,0 +1,66 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.header {
+  height: $header-height;
+  background-color: $color-board-header;
+  @include flex-between;
+  padding: 0 $spacing-sm;
+  flex-shrink: 0;
+
+  @include respond-below('sm') {
+    height: 40px;
+    padding: 0 $spacing-xs;
+  }
+}
+
+.titleWrapper {
+  @include flex-center;
+  gap: $spacing-sm;
+}
+
+.title {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-text-white;
+  cursor: pointer;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $radius-sm;
+  border: 2px solid transparent;
+  background: transparent;
+  transition: background-color $transition-fast;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  @include respond-below('sm') {
+    font-size: $font-size-base;
+    padding: $spacing-xxs $spacing-xs;
+  }
+}
+
+.titleInput {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $radius-sm;
+  border: 2px solid $color-input-focus;
+  background: $color-card-bg;
+  outline: none;
+  font-family: $font-family-base;
+  min-width: 200px;
+
+  @include respond-below('sm') {
+    font-size: $font-size-base;
+    min-width: 150px;
+    padding: $spacing-xxs $spacing-xs;
+  }
+}
+
+.boardIcon {
+  color: $color-text-white;
+  opacity: 0.8;
+  font-size: $font-size-md;
+}

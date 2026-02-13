@@ -1,0 +1,148 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.boardWrapper {
+  height: 100vh;
+  height: 100dvh;
+  @include flex-column;
+  background-color: $color-board-bg;
+  overflow: hidden;
+  font-family: $font-family-base;
+}
+
+.boardContent {
+  flex: 1;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: $spacing-md;
+  @include custom-scrollbar;
+
+  // Desktop scrollbar
+  &::-webkit-scrollbar {
+    height: 12px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: $radius-md;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.4);
+    }
+  }
+
+  // Tablet
+  @include respond-below('md') {
+    padding: $spacing-sm;
+  }
+
+  // Mobile - vertical scroll for stacked lists
+  @include respond-below('sm') {
+    padding: $spacing-sm $spacing-xs;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+.listsContainer {
+  display: flex;
+  gap: $spacing-md;
+  align-items: flex-start;
+  height: 100%;
+  padding-bottom: $spacing-sm;
+
+  // Tablet
+  @include respond-below('md') {
+    gap: $spacing-sm;
+  }
+
+  // Mobile - stack vertically instead of horizontal scroll
+  @include respond-below('sm') {
+    flex-direction: column;
+    gap: $spacing-sm;
+    padding-right: $spacing-sm;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}
+
+.dragOverlay {
+  cursor: grabbing;
+}
+
+.dragOverlayCard {
+  background-color: $color-card-bg;
+  border-radius: $radius-lg;
+  padding: $spacing-sm;
+  box-shadow: $shadow-dragging;
+  transform: rotate(3deg);
+  font-size: $font-size-base;
+  color: $color-card-text;
+  max-width: $list-width;
+
+  .overlayTitle {
+    font-weight: $font-weight-normal;
+    word-break: break-word;
+    line-height: 1.4;
+  }
+
+  .overlayBadge {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    margin-top: $spacing-xs;
+    font-size: $font-size-xs;
+    color: $color-text-secondary;
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+}
+
+.dragOverlayList {
+  background-color: $color-list-bg;
+  border-radius: $radius-xl;
+  width: $list-width;
+  max-height: 400px;
+  overflow: hidden;
+  box-shadow: $shadow-dragging;
+  transform: rotate(2deg);
+  padding: $spacing-sm;
+
+  .overlayListTitle {
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    color: $color-list-header;
+    padding: $spacing-xs $spacing-sm;
+    margin-bottom: $spacing-sm;
+  }
+
+  .overlayListCards {
+    @include flex-column;
+    gap: $spacing-sm;
+    padding: 0 $spacing-xs;
+  }
+
+  .overlayListCard {
+    background-color: $color-card-bg;
+    border-radius: $radius-lg;
+    padding: $spacing-sm;
+    box-shadow: $shadow-card;
+    font-size: $font-size-base;
+    color: $color-card-text;
+  }
+
+  .overlayListMore {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+    padding: $spacing-xs $spacing-sm;
+    text-align: center;
+  }
+}

@@ -1,0 +1,67 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.trigger {
+  @include button-base;
+  width: 100%;
+  padding: $spacing-sm;
+  text-align: left;
+  color: $color-text-secondary;
+  background: transparent;
+  border-radius: $radius-lg;
+  font-size: $font-size-base;
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+    color: $color-text-primary;
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.form {
+  padding: 0 $spacing-xs $spacing-xs;
+}
+
+.input {
+  @include input-base;
+  min-height: 54px;
+  resize: none;
+  border-radius: $radius-sm;
+  padding: $spacing-sm;
+  margin-bottom: $spacing-sm;
+  font-size: $font-size-base;
+  font-family: $font-family-base;
+  box-shadow: $shadow-card;
+}
+
+.formActions {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.addBtn {
+  @include button-primary;
+  padding: $spacing-sm $spacing-lg;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+}
+
+.cancelBtn {
+  @include button-ghost;
+  font-size: $font-size-xl;
+  line-height: 1;
+  padding: $spacing-xs $spacing-sm;
+  color: $color-text-secondary;
+
+  &:hover {
+    color: $color-text-primary;
+  }
+}

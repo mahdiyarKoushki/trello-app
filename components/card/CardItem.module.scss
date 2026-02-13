@@ -1,0 +1,113 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.card {
+  @include card-style;
+  padding: $spacing-sm $spacing-sm;
+  cursor: grab;
+  position: relative;
+  min-height: $card-min-height;
+  user-select: none;
+  touch-action: manipulation;
+
+  &:hover {
+    background-color: $color-card-hover;
+
+    .actions {
+      opacity: 1;
+    }
+  }
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.cardDragging {
+  opacity: 0.4;
+  box-shadow: none;
+}
+
+.cardContent {
+  @include flex-between;
+  gap: $spacing-sm;
+}
+
+.titleWrapper {
+  flex: 1;
+  min-width: 0;
+}
+
+.cardTitle {
+  font-size: $font-size-base;
+  font-weight: $font-weight-normal;
+  color: $color-card-text;
+  word-break: break-word;
+  line-height: 1.4;
+}
+
+.editInput {
+  @include input-base;
+  font-size: $font-size-base;
+  padding: $spacing-xs;
+  min-height: 32px;
+}
+
+.actions {
+  display: flex;
+  gap: $spacing-xxs;
+  opacity: 0;
+  transition: opacity $transition-fast;
+  flex-shrink: 0;
+
+  // Always show on touch devices
+  @media (hover: none) {
+    opacity: 1;
+  }
+}
+
+.actionBtn {
+  @include button-ghost;
+  width: 24px;
+  height: 24px;
+  @include flex-center;
+  border-radius: $radius-sm;
+  font-size: $font-size-xs;
+}
+
+.deleteBtn {
+  @include button-ghost;
+  width: 24px;
+  height: 24px;
+  @include flex-center;
+  border-radius: $radius-sm;
+  font-size: $font-size-xs;
+
+  &:hover {
+    background-color: rgba($color-btn-danger, 0.15);
+    color: $color-btn-danger;
+  }
+}
+
+.commentBadge {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  margin-top: $spacing-xs;
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-family: $font-family-base;
+
+  &:hover {
+    color: $color-text-primary;
+  }
+
+  svg {
+    width: 14px;
+    height: 14px;
+  }
+}

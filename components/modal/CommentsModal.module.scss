@@ -1,0 +1,257 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.overlay {
+  @include modal-overlay;
+  padding: $spacing-xl;
+  animation: fadeIn 150ms ease;
+
+  // Tablet
+  @include respond-below('md') {
+    padding: $spacing-lg;
+  }
+
+  // Mobile
+  @include respond-below('sm') {
+    padding: $spacing-sm;
+  }
+}
+
+.modal {
+  background-color: $color-modal-bg;
+  border-radius: $radius-lg;
+  width: 100%;
+  max-width: 600px;
+  max-height: 80vh;
+  @include flex-column;
+  box-shadow: $shadow-modal;
+  z-index: $z-modal;
+  animation: slideUp 200ms ease;
+  overflow: hidden;
+
+  // Tablet
+  @include respond-below('md') {
+    max-width: 520px;
+    max-height: 85vh;
+  }
+
+  // Mobile
+  @include respond-below('sm') {
+    max-height: 92vh;
+    border-radius: $radius-md;
+  }
+}
+
+.header {
+  @include flex-between;
+  padding: $spacing-lg $spacing-xl;
+  border-bottom: 1px solid $color-comment-border;
+  background-color: $color-card-bg;
+  flex-shrink: 0;
+
+  @include respond-below('sm') {
+    padding: $spacing-md $spacing-lg;
+  }
+}
+
+.headerLeft {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-md;
+  flex: 1;
+  min-width: 0;
+
+  svg {
+    width: 20px;
+    height: 20px;
+    color: $color-text-secondary;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+}
+
+.cardTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  word-break: break-word;
+}
+
+.listName {
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+  margin-top: $spacing-xxs;
+}
+
+.closeBtn {
+  @include button-ghost;
+  width: 32px;
+  height: 32px;
+  @include flex-center;
+  border-radius: $radius-full;
+  font-size: $font-size-xl;
+  flex-shrink: 0;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+  }
+}
+
+.body {
+  @include flex-column;
+  flex: 1;
+  overflow-y: auto;
+  @include custom-scrollbar;
+}
+
+.commentsSection {
+  padding: $spacing-lg $spacing-xl;
+  @include flex-column;
+  gap: $spacing-md;
+
+  @include respond-below('sm') {
+    padding: $spacing-md $spacing-lg;
+  }
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: $spacing-xs;
+
+  svg {
+    width: 18px;
+    height: 18px;
+    color: $color-text-secondary;
+  }
+}
+
+// Comments list is above the input form
+.commentsList {
+  @include flex-column;
+  gap: $spacing-md;
+}
+
+.commentItem {
+  background-color: $color-comment-bg;
+  border-radius: $radius-md;
+  padding: $spacing-md;
+  border: 1px solid $color-comment-border;
+}
+
+.commentHeader {
+  @include flex-between;
+  margin-bottom: $spacing-xs;
+  flex-wrap: wrap;
+  gap: $spacing-xs;
+}
+
+.commentAuthor {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.commentAvatar {
+  width: 28px;
+  height: 28px;
+  border-radius: $radius-full;
+  background-color: $color-btn-primary;
+  color: $color-text-white;
+  @include flex-center;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-bold;
+  flex-shrink: 0;
+}
+
+.commentDate {
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+}
+
+.commentText {
+  font-size: $font-size-base;
+  color: $color-text-primary;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+// Input form at the BOTTOM
+.commentForm {
+  display: flex;
+  gap: $spacing-sm;
+  margin-top: $spacing-md;
+  padding-top: $spacing-md;
+  border-top: 1px solid $color-comment-border;
+
+  @include respond-below('sm') {
+    flex-direction: column;
+  }
+}
+
+.commentInput {
+  @include input-base;
+  flex: 1;
+  min-height: 40px;
+  resize: none;
+  font-family: $font-family-base;
+}
+
+.submitBtn {
+  @include button-primary;
+  padding: $spacing-sm $spacing-lg;
+  white-space: nowrap;
+  align-self: flex-end;
+  font-weight: $font-weight-semibold;
+
+  @include respond-below('sm') {
+    align-self: stretch;
+  }
+}
+
+.emptyComments {
+  text-align: center;
+  padding: $spacing-xl;
+  color: $color-text-secondary;
+  font-size: $font-size-base;
+
+  svg {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto $spacing-md;
+    opacity: 0.4;
+  }
+
+  p {
+    margin-top: $spacing-xs;
+    font-size: $font-size-sm;
+  }
+}
+
+// Animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

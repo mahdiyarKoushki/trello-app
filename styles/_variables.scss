@@ -1,0 +1,108 @@
+// ============================================
+// SCSS Variables - Trello Clone Design System
+// ============================================
+
+// --- Color Palette ---
+$color-primary: #026aa7;
+$color-primary-dark: #01567a;
+$color-primary-light: #0079bf;
+
+$color-board-bg: #0079bf;
+$color-board-header: rgba(0, 0, 0, 0.15);
+
+$color-list-bg: #ebecf0;
+$color-list-header: #172b4d;
+
+$color-card-bg: #ffffff;
+$color-card-text: #172b4d;
+$color-card-hover: #f4f5f7;
+$color-card-shadow: rgba(9, 30, 66, 0.25);
+$color-card-border: #091e420f;
+
+$color-text-primary: #172b4d;
+$color-text-secondary: #5e6c84;
+$color-text-white: #ffffff;
+$color-text-placeholder: #a5adba;
+
+$color-btn-primary: #0079bf;
+$color-btn-primary-hover: #026aa7;
+$color-btn-add: #ffffff3d;
+$color-btn-add-hover: #ffffff52;
+$color-btn-danger: #eb5a46;
+$color-btn-danger-hover: #cf513d;
+
+$color-modal-overlay: rgba(0, 0, 0, 0.64);
+$color-modal-bg: #f4f5f7;
+
+$color-input-border: #dfe1e6;
+$color-input-focus: #0079bf;
+
+$color-comment-bg: #ffffff;
+$color-comment-border: #dfe1e6;
+
+$color-drag-placeholder: rgba(0, 0, 0, 0.08);
+
+// --- Typography ---
+$font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+  'Noto Sans', Ubuntu, 'Droid Sans', 'Helvetica Neue', sans-serif;
+
+$font-size-xs: 0.75rem;   // 12px
+$font-size-sm: 0.8125rem; // 13px
+$font-size-base: 0.875rem; // 14px
+$font-size-md: 1rem;       // 16px
+$font-size-lg: 1.125rem;   // 18px
+$font-size-xl: 1.25rem;    // 20px
+
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// --- Spacing ---
+$spacing-xxs: 2px;
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 12px;
+$spacing-lg: 16px;
+$spacing-xl: 24px;
+$spacing-xxl: 32px;
+
+// --- Border Radius ---
+$radius-sm: 3px;
+$radius-md: 6px;
+$radius-lg: 8px;
+$radius-xl: 12px;
+$radius-full: 50%;
+
+// --- Shadows ---
+$shadow-card: 0 1px 0 $color-card-shadow;
+$shadow-card-hover: 0 4px 8px rgba(9, 30, 66, 0.15);
+$shadow-list: 0 1px 1px rgba(9, 30, 66, 0.25);
+$shadow-modal: 0 8px 16px -4px rgba(9, 30, 66, 0.25),
+  0 0 0 1px rgba(9, 30, 66, 0.08);
+$shadow-dragging: 0 12px 24px -6px rgba(9, 30, 66, 0.25),
+  0 0 0 1px rgba(9, 30, 66, 0.08);
+
+// --- Transitions ---
+$transition-fast: 85ms ease;
+$transition-base: 200ms ease;
+$transition-slow: 300ms ease;
+
+// --- Z-Index ---
+$z-card: 1;
+$z-list: 2;
+$z-dragging: 100;
+$z-modal-overlay: 500;
+$z-modal: 501;
+
+// --- Layout ---
+$header-height: 44px;
+$list-width: 272px;
+$list-max-height: calc(100vh - 100px);
+$card-min-height: 24px;
+
+// --- Breakpoints ---
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;

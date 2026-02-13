@@ -1,0 +1,160 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.list {
+  background-color: $color-list-bg;
+  border-radius: $radius-xl;
+  width: $list-width;
+  min-width: $list-width;
+  max-height: $list-max-height;
+  @include flex-column;
+  box-shadow: $shadow-list;
+  flex-shrink: 0;
+
+  // Tablet
+  @include respond-below('md') {
+    width: 260px;
+    min-width: 260px;
+  }
+
+  // Mobile - full width stacked layout
+  @include respond-below('sm') {
+    width: 100%;
+    min-width: 100%;
+    max-height: none;
+  }
+}
+
+.listDragging {
+  box-shadow: $shadow-dragging;
+  opacity: 0.5;
+}
+
+.listHeader {
+  display: flex;
+  align-items: center;
+  padding: $spacing-sm $spacing-sm $spacing-xs;
+  min-height: 40px;
+  gap: $spacing-xs;
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.titleWrapper {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: calc(100% - 36px);
+}
+
+.listTitle {
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  color: $color-list-header;
+  padding: $spacing-xs $spacing-sm;
+  cursor: pointer;
+  border-radius: $radius-sm;
+  border: 2px solid transparent;
+  background: transparent;
+  word-break: break-word;
+  transition: background-color $transition-fast;
+  display: inline-block;
+  width: auto;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+}
+
+.listTitleInput {
+  @include input-base;
+  font-weight: $font-weight-semibold;
+  padding: $spacing-xs $spacing-sm;
+  width: auto;
+  min-width: 80px;
+}
+
+// Spacer fills remaining space so the whole header row stays a drag handle
+.headerSpacer {
+  flex: 1 1 auto;
+  min-height: 28px;
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.deleteBtn {
+  @include button-ghost;
+  width: 28px;
+  height: 28px;
+  @include flex-center;
+  border-radius: $radius-sm;
+  flex-shrink: 0;
+
+  &:hover {
+    background-color: rgba($color-btn-danger, 0.12);
+    color: $color-btn-danger;
+  }
+
+  svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+.cardsContainer {
+  @include flex-column;
+  gap: $spacing-sm;
+  padding: 0 $spacing-sm;
+  overflow-y: auto;
+  flex: 1;
+  min-height: 8px;
+  @include custom-scrollbar;
+  transition: background-color $transition-fast;
+  border-radius: $radius-md;
+  margin: 0 $spacing-xxs;
+}
+
+.cardsContainerOver {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.emptyPlaceholder {
+  @include flex-center;
+  min-height: 40px;
+  border-radius: $radius-lg;
+  border: 2px dashed transparent;
+  color: $color-text-secondary;
+  font-size: $font-size-sm;
+  transition: all $transition-fast;
+
+  span {
+    opacity: 0;
+    transition: opacity $transition-fast;
+  }
+}
+
+.emptyPlaceholderOver {
+  border-color: $color-btn-primary;
+  background-color: rgba($color-btn-primary, 0.06);
+
+  span {
+    opacity: 1;
+    color: $color-btn-primary;
+  }
+}
+
+.footer {
+  padding: $spacing-xs;
+}
+
+.dropPlaceholder {
+  background-color: $color-drag-placeholder;
+  border-radius: $radius-lg;
+  min-height: 40px;
+  margin-bottom: $spacing-sm;
+}

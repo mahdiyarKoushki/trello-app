@@ -1,0 +1,80 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.wrapper {
+  min-width: $list-width;
+  flex-shrink: 0;
+
+  // Tablet
+  @include respond-below('md') {
+    min-width: 260px;
+  }
+
+  // Mobile - full width stacked layout
+  @include respond-below('sm') {
+    min-width: 100%;
+  }
+}
+
+.trigger {
+  @include button-base;
+  width: 100%;
+  padding: $spacing-md $spacing-lg;
+  text-align: left;
+  color: $color-text-white;
+  background-color: $color-btn-add;
+  border-radius: $radius-xl;
+  font-size: $font-size-base;
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  transition: background-color $transition-fast;
+
+  &:hover {
+    background-color: $color-btn-add-hover;
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.form {
+  background-color: $color-list-bg;
+  border-radius: $radius-xl;
+  padding: $spacing-sm;
+  box-shadow: $shadow-list;
+}
+
+.input {
+  @include input-base;
+  margin-bottom: $spacing-sm;
+  padding: $spacing-sm;
+  font-size: $font-size-base;
+}
+
+.formActions {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.addBtn {
+  @include button-primary;
+  padding: $spacing-sm $spacing-lg;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+}
+
+.cancelBtn {
+  @include button-ghost;
+  font-size: $font-size-xl;
+  line-height: 1;
+  padding: $spacing-xs $spacing-sm;
+  color: $color-text-secondary;
+
+  &:hover {
+    color: $color-text-primary;
+  }
+}
